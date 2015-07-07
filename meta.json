@@ -1,28 +1,39 @@
-/*
- * Metadata describing the module operation
- */
 {
-    //Required. Inputs the module expects.
-    "inputs": [
-        //e.g.
-        /*
-        {
-            "id": "from",
-            "title":"From",
-            "type":"string"
-        }
-        */
-    ],
-    //Required. Outputs the module emits.
-    "outputs": [
-      //e.g.
-      /*
-        {
-            "id": "from",
-            "title":"From",
-            "type":"array"
-        }
-      */
-    ],
-    "title": "Slack Send Message" /* Required.A display name for the module */
+    "inputs": [{
+        "id"          : "exclude_archived",
+        "title"       : "Exclude Archived",
+        "description" : "Whether to exclude archived channels"
+    }, {
+        "id"          : "exclude_nonmember",
+        "title"       : "Exclude Nonmember",
+        "description" : "Whether to exclude channels we're not a member of" 
+    }],
+    "outputs": [{
+        "id"      : "id"
+        , "title" : "Id"
+    }, {
+        "id"      : "name"
+        , "title" : "Name"
+    }, {
+        "id"      : "is_archived"
+        , "title" : "Is Archived"
+    }, {
+        "id"      : "is_member"
+        , "title" : "Is Member"
+    }, {
+        "id"      : "num_members"
+        , "title" : "Num Members"
+    }, {
+        "id"      : "topic"
+        , "title" : "Topic"
+    }, {
+        "id"      : "purpose"
+        , "title" : "Purpose"
+    }],
+    "providers" : [{
+        "name"   : "slack",
+        "scopes" : [ "channels:read" ]
+    }],
+    "icon" : "slack",
+    "title": "Slack List Channels"
 }
