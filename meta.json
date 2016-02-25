@@ -32,7 +32,7 @@
     }],
     "providers" : [{
         "name"   : "slack",
-        "scopes" : [ "channels:read" ]
+        "scopes" : [ "channels:read", "groups:read" ]
     }],
     "icon" : "slack",
     "title": "Slack List Channels"

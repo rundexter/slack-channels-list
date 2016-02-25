@@ -24,6 +24,7 @@ module.exports = {
           , isBot       = !!botToken //operate as the bot if we don't have a different username and we have a bot token
           , accessToken =  botToken || provider.credentials('access_token')
           , url         = 'https://slack.com/api/channels.list'
+          , groups_url  = 'https://slack.com/api/groups.list'
           , self        = this
           , data        = {
               exclude_archived: exclude_archived || 1
@@ -33,12 +34,16 @@ module.exports = {
 
         console.log(data);
 
-        this.send(data, url)
+        q.all([this.send(data, url), this.send(data, groups_url)])
            .then(function(results) {
+               var channels = results[0].channels
+                 , groups   = results[1].groups
+               ;
+
                if(exclude_nonmember) {
-                   self.complete(_.where(results.channels, { is_member: true }));
+                   self.complete(groups.concat(_.where(channels, { is_member: true })));
                } else {
-                   self.complete(results.channels);
+                   groups.concat(self.complete(channels));
                }
            })
            .catch(function(err) {
