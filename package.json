@@ -1,7 +1,7 @@
 {
     "name"        : "slack-channels-list",
     "version"     : "0.0.1",
-    "description" : "",
+    "description" : "Gets the list of channels on a slack team, with the ability to filter out archived and joined/unjoined channels.",
     "main"        : "index.js",
     "author"      : "Run Dexter, Inc.",
     "license"     : "MIT",
