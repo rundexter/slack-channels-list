@@ -32,8 +32,6 @@ module.exports = {
           }
         ;
 
-        console.log(data);
-
         q.all([this.send(data, url), this.send(data, groups_url)])
            .then(function(results) {
                var channels = results[0].channels
